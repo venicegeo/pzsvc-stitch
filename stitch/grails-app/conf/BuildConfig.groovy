@@ -79,3 +79,4 @@ grails.project.dependency.resolution = {
 }
 
 grails.dependency.cache.dir = ".workdir/dependencies"
+grails.plugin.location.httpBuilder = "../plugins/httpBuilder"
