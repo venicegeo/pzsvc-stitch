@@ -117,4 +117,4 @@ log4j.main = {
 }
 
 grails.resources.work.dir = ".resources"
-tempDirectory = "${System.getProperty("java.io.tmpdir")}"
+tempDirectory = System.getProperty("java.io.tmpdir").replaceAll(/\/$/, "")
