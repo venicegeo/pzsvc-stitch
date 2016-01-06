@@ -4,6 +4,7 @@
 
 var form;
 var imageData = [];
+var submittedParams = {};
 var urls = [];
 
 function checkImageLoadStatus() {
@@ -22,6 +23,8 @@ function checkImageLoadStatus() {
 		input.type = "hidden";
 		input.value = imageData.join(",");
 		form.appendChild(input);
+
+		submittedParams.imageData = imageData;
 
 		form.submit();
 		form.remove();
@@ -42,6 +45,8 @@ function createForm() {
 	input.type = "hidden";
 	input.value = $("#outputFormat").val();
 	form.appendChild(input);
+
+	submittedParams.outputFormat = input.value;	
 
 
 	return form;
@@ -70,14 +75,7 @@ function getImageData(url, index) {
 
 }
 
-function populateSubmittedParams() {
-	$("#submittedParams").append(form["0"].attributes.name.value + "=");
-	$("#submittedParams").append(form["0"].attributes.value.value);
-	
-	$("#submittedParams").append("<br><br>");
-	$("#submittedParams").append(form["1"].attributes.name.value + "=");
-	$("#submittedParams").append(form["1"].attributes.value.value.replace(/,/g, ",<br>"));
-}
+function populateSubmittedParams() { $("#submittedParams").html("<pre>" + JSON.stringify(submittedParams, null, "\t") + "</pre>"); }
 
 function stitch() {
 	$("#submittedParams").html("");
@@ -111,6 +109,8 @@ function submitUrls(urls) {
 	input.type = "hidden";
 	input.value = urls.join(",");
 	form.appendChild(input);
+
+	submittedParams.imageUrls = urls;
 
 	form.submit();
 	form.remove();
