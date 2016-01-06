@@ -28,7 +28,7 @@ class StitchService {
 		return file
 	}
 
-	def generateFilename() { return "${grailsApplication.config.tempDirectory}${new Date().format("yyyyMMddHHmmssSSS")}" }
+	def generateFilename() { return "${grailsApplication.config.tempDirectory}/${new Date().format("yyyyMMddHHmmssSSS")}" }
 
 	def serviceMethod(params) {
 		def finishedProduct = generateFilename() as File
